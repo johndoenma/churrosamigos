@@ -249,6 +249,9 @@ body.demo::before {
     .row > .column:last-child {
         margin-right: 0;
     }
+    .row.swapped {
+        flex-direction: row-reverse;
+    }
 
     .row > .column {
         flex-grow: 1;
@@ -291,15 +294,10 @@ body.demo::before {
 /* SITE HEADER */
 .site-header {
     padding: 1em 0;
+    position: absolute;
+    width: 100%;
 }
 
-/* ON LARGER SCREENS PLACE LOGO LEFT AND NAV RIGHT */
-@media (min-width: 768px) {
-    .site-header .container {
-        display: flex;
-        justify-content: space-between;
-    }
-}
 
 /* STYLING FOR BOTH HEADER AND FOOTER */
 .site-header a,
@@ -338,18 +336,6 @@ body.demo::before {
     display: none;
 }
 
-/* STICKY HEADER */
-.site-header.sticky {
-    position: fixed;
-    width: 100%;
-    top: 0;
-    z-index: 100;
-    background-color: #fff;
-    }
-
-.site-header.sticky + .site-main {
-    padding-top: 3em;
-}
 
 /* SECTIONS */
 section {
@@ -539,10 +525,4 @@ img, svg, canvas, video {
     margin-bottom: 2em;
 }
 
-.section-title:after {
-    content: "";
-    display: block;
-    border-bottom: 3px solid rgba(0,0,153,1);
-    width: 50px;
-    margin: 0.5em auto;
-}
+
