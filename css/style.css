@@ -142,19 +142,21 @@ body {
     perspective: 10px; */
 }
 
-.desk {
+.hide-on-mobile {
     display: none;
+}
+.hide-on-desktop {
+    display: block;
 }
 
 @media (min-width: 768px) {
-    #desk {
+    .hide-on-mobile {
         display: block;
     }
-
-    #mobile {
+    .hide-on-desktop {
         display: none;
     }
-}
+} 
 
 /* ----------- LOGO ------------*/
 /* .logo {
@@ -180,9 +182,9 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100%;
     transform-style: preserve-3d;
     z-index: -1;
+    min-height: 100vh;
 }
 
 .background,
@@ -236,16 +238,26 @@ p.arrow {
 }
 
 .palmdivider {
-    margin: 0;
-    padding: 0;
-    position: relative;
-    bottom: -13px;
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 100%;
+    background-image: url(../img/SVG/palmdivider.svg);
+    background-repeat: repeat-x;
+    background-position: center bottom;
+    background-size: 100%;
+    aspect-ratio: 1440 / 170;
 }
 
-img.palmdivider {
-    margin: 0;
-    padding: 0;
+@media (max-width: 767px) {
+    .palmdivider {
+        background-image: url(../img/SVG/palmdivider-m.svg);
+        aspect-ratio: 693 / 170;
+    } 
 }
+
+
+
 
 
 
@@ -282,6 +294,7 @@ img.palmdivider {
 .about h2,
 .about h3 {
     color: #F8E2B7;
+    margin: 0;
 }
 
 .about h3 {
@@ -483,7 +496,7 @@ img.palmdivider {
 
 .menu {
     /* Testing */
-    border: dashed green 1px;
+    /* border: dashed green 1px; */
     
     background-color: #331600;
     color: white;
@@ -500,7 +513,7 @@ img.palmdivider {
     /* background-color: rgba(212, 228, 124, 0.528); */
 
     /* Testing */
-    border: dashed white 1px;
+    /* border: dashed white 1px; */
 }
 
 .menu h2,
@@ -553,21 +566,59 @@ img.palmdivider {
     left: 0;
     width: 100%;
     height: 100%;
+    overflow: hidden;
 }
   
 .parallax-layer {
     /* border: 2px solid yellow; */
     grid-column: 1 / 1;
     grid-row: 1 / 1;
-    transform-origin: center top;
-    background-repeat: no-repeat;
-    background-size: 100%;
-    background-position: center top;
+    transform-origin: center center;
 }
 
-.oceanfloor .parallax-layer1 { background-image: url(../img/menu-back-m.svg); }
-.oceanfloor .parallax-layer2 { background-image: url(../img/menu-mid-m.svg); }
-.oceanfloor .parallax-layer3 { background-image: url(../img/menu-front-m.svg); }
+.sky-mountains {
+    /* min-height: 100vh; */
+}
+
+.sky-mountains .parallax-wrapper {
+    overflow: visible;
+}
+
+.sky-mountains .parallax-layer {
+    transform-origin: center center;
+    background-repeat: no-repeat;
+    background-size: 100%;
+}
+
+.sky-mountains .parallax-layer1 { 
+    background-position: center center;
+    background-image: url(../img/clouds.svg); 
+}
+.sky-mountains .parallax-layer2 { 
+    background-image: url(../img/mountains.svg); 
+    background-position: center bottom;
+}
+
+.oceanfloor .parallax-layer {
+    transform-origin: center center;
+    background-repeat: no-repeat;
+    background-size: 100%;
+}
+.oceanfloor .parallax-layer1 { 
+    transform-origin: center top;
+    background-image: url(../img/menu-back-m.svg);
+    background-position: center top; 
+}
+.oceanfloor .parallax-layer2 { 
+    transform-origin: center top;
+    background-image: url(../img/menu-mid-m.svg); 
+    background-position: center top;
+}
+.oceanfloor .parallax-layer3 { 
+    transform-origin: center top;
+    background-image: url(../img/menu-front-m.svg); 
+    background-position: center top;
+}
 
 /* --SMALL SCREENS -- */
 
@@ -705,6 +756,7 @@ img.palmdivider {
     margin: 0;
     padding: 1em;
     position: relative;
+    z-index: 100;
     margin-left: -5em;
     display: flex;
     flex-direction: column;
